@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Tasks
+ // TODO User Guess is stored as an array of letters, the keyboard (when implemented) updates the index in the Array based on the current selected Number state 
+ // TODO Letter squares take their displayed letter from their index number in the UserGuessArray
+ // TODO Submit and check asnwer whill turn the UserGuess array into a string and then compare it against the correctAnswer
+ // TODO Create Keyboard & Letter Components 
+ // TODO Keyboard Letter components - Push chosen letter to currentSelectedSquare then increase currentSelectedSquare
+ // TODO Create Submit Button - Which once hit 
+ // TODO Clues...
