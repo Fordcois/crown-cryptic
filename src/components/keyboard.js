@@ -2,8 +2,8 @@
 const Keyboard = ({ currentSelectedSquare,letterIndex,correctLetter }) => {
 
   return (
-    <div>
-            <div>QWERTYUIOP</div>
+    <div className="Keyboard">
+            <div>qwertyuiop</div>
             <div>asdfghjkl</div>
             <div>zxcvbnm</div>
     </div>
