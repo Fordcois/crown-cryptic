@@ -1,45 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Crown Cryptic
+
+Crown Cryptic is an in development web application designed to challenge users with a daily cryptic crossword clue. Inspired by the success of word-based games like Wordle, Crown Cryptic provides a fun and engaging way to solve cryptic crossword clues every day. 
+
+This project is a collaboration between [Sam Ford](https://github.com/Fordcois) & [Rachel Roberts](https://github.com/Rachel853)
+.
+
+You can explore our design and planning documents here:
+
+- [Live Design Document](https://hackmd.io/@cXzrcJerTQGszfvObYAayQ/CrownCrypticDesign)
+- [Figma Mock-ups](https://www.figma.com/proto/MU6UagXDGSGhVlMFicNLFC/Crown-Cryptic?node-id=1-5&t=ta966i64D5ILQSvX-1)
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the Repository
+
+```bash
+git clone https://github.com/Fordcois/crown-cryptic.git
+```
+2. Install Dependencies
+
+```bash
+npm install
+```
+3. Start the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+4. Open http://localhost:3000 in your browser to see the application in action.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Future Development Tasks
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. User Guess Storage: Store the user's guess as an array of letters. The keyboard, once implemented, should update the corresponding index in this array based on the currently selected number or state.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Letter Display in Squares: Each letter square should display its letter based on the corresponding index in the UserGuessArray.
 
-## Learn More
+3. Submit and Check Answer: Implement functionality to convert the UserGuessArray into a string upon submission. Compare this string with the correctAnswer. If they match, proceed with the appropriate action.
 
-To learn more about Next.js, take a look at the following resources:
+4. Create Keyboard & Letter Components: Develop the on-screen keyboard and individual letter components to facilitate user input.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Keyboard Letter Components Functionality: Ensure that selecting a letter on the keyboard updates the currentSelectedSquare and increments the currentSelectedSquare index accordingly.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+6. Submit Button Functionality: Develop a submit button that, when clicked, converts the UserGuessArray into a string and compares it with the correct answer. If the answer is correct, trigger a pop-up notification.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## Tasks
- // TODO User Guess is stored as an array of letters, the keyboard (when implemented) updates the index in the Array based on the current selected Number state 
- // TODO Letter squares take their displayed letter from their index number in the UserGuessArray
- // TODO Submit and check asnwer whill turn the UserGuess array into a string and then compare it against the correctAnswer
- // TODO Create Keyboard & Letter Components 
- // TODO Keyboard Letter components - Push chosen letter to currentSelectedSquare then increase currentSelectedSquare
- // TODO Create Submit Button - Which once hit 
- // TODO Clues...
+7. Clue Implementation: Decide on and implement the method for providing hints or additional clues to users.

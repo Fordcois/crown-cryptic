@@ -8,7 +8,9 @@ const CrownCryptic = () => {
 
 const CorrectAnswer='CORRECT'
 const [currentSelectedSquare,setcurrentSelectedSquare] = useState(0)
-// const Array =[]*(CorrectAnswer.split('').length)
+// const answerLength = (CorrectAnswer.split('').length)
+
+// const Array =[]*answerLength
 
 // const isCorrect 
 // return { arrau.join === correctAnser}
@@ -19,7 +21,7 @@ return (
     <b>Correct Answer:</b> {CorrectAnswer}<br/>
 
     <div className="LetterContainer">
-
+        {/* Turn this into Array.From  */}
         {CorrectAnswer.split('').map((correctLetter, index) => (
         <span key={index} onClick={()=>{setcurrentSelectedSquare(index)}}>
             <LetterSquare currentSelectedSquare={currentSelectedSquare} letterIndex={index} correctLetter={correctLetter}/>
