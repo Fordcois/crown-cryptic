@@ -31,23 +31,26 @@ npm run dev
 
 ## Future Development Tasks
 
-Clue Implementation: Decide on and implement the method for providing hints or additional clues to users.
+1. **Organise Storage of Questions, Answers, and Clues as JSON** Create a structured way to store questions, answers, and clues in a JSON format, making it easy to retrieve and use them based on the date.
 
-Clue Letters - Letters given as clues should not be able to be changed
 
-CSS & Styling
+2. **Clue Implementation** Develop a system for providing hints or additional clues to the users to aid in solving the puzzle.
 
-## Development Log & Completed Tasks
-[7th July]
+3. **Clue Letters** Ensure that letters provided as clues are fixed and cannot be altered by the user once provided 
 
-User Guess Storage: Store the user's guess as an array of letters. The keyboard, once implemented, should update the corresponding index in this array based on the currently selected number or state.
+4. **When Puzzle is Solved - Pop-up Display** Create a pop-up notification when the puzzle is solved that includes a shareable message highlighting the solution and the clues used.
 
-Letter Display in Squares: Each letter square should display its letter based on the corresponding index in the UserGuessArray.
+5. **CSS & Styling** Improve the visual design and user experience of the application.
 
-Submit and Check Answer: Implement functionality to convert the UserGuessArray into a string upon submission. Compare this string with the correctAnswer. If they match, proceed with the appropriate action.
+## Development Log
+<details>
 
-Create Keyboard & Letter Components: Develop the on-screen keyboard and individual letter components to facilitate user input.
+<summary><b>7th July</b></summary>
 
-Keyboard Letter Components Functionality: Ensure that selecting a letter on the keyboard updates the currentSelectedSquare and increments the currentSelectedSquare index accordingly.
+**User Guess Storage** Stored the user's guess as an array of letters. The keyboard, once implemented, should update the corresponding index in this array based on the currently selected number or state.
 
-Submit Button Functionality: Develop a submit button that, when clicked, converts the UserGuessArray into a string and compares it with the correct answer. If the answer is correct, trigger a pop-up notification.
+**Submit and Check Answer** Added functionality to convert the `userGuessArray` into a string upon submission. This string is then compared with the `CorrectAnswer`. If they match, a boolean is set 
+
+**Create Keyboard & Letter Components** Developed the on-screen keyboard and individual letter components to facilitate user input. Implemented functionality to ensure that selecting a letter on the keyboard updates the `currentSelectedSquare` and increments the `currentSelectedSquare` index accordingly.
+
+</details>
