@@ -1,8 +1,8 @@
 "use client"; 
 import { useState } from 'react';
 
-const LetterSquare = ({ currentSelectedSquare,letterIndex,correctLetter }) => {
-const [currentLetter, setCurrentLetter] = useState('');
+const LetterSquare = ({ currentLetter,currentSelectedSquare,letterIndex }) => {
+
 const selectedLetter = (currentSelectedSquare == letterIndex);
 
 return (

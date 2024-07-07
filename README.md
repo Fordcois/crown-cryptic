@@ -31,16 +31,23 @@ npm run dev
 
 ## Future Development Tasks
 
-1. User Guess Storage: Store the user's guess as an array of letters. The keyboard, once implemented, should update the corresponding index in this array based on the currently selected number or state.
+Clue Implementation: Decide on and implement the method for providing hints or additional clues to users.
 
-2. Letter Display in Squares: Each letter square should display its letter based on the corresponding index in the UserGuessArray.
+Clue Letters - Letters given as clues should not be able to be changed
 
-3. Submit and Check Answer: Implement functionality to convert the UserGuessArray into a string upon submission. Compare this string with the correctAnswer. If they match, proceed with the appropriate action.
+CSS & Styling
 
-4. Create Keyboard & Letter Components: Develop the on-screen keyboard and individual letter components to facilitate user input.
+## Development Log & Completed Tasks
+[7th July]
 
-5. Keyboard Letter Components Functionality: Ensure that selecting a letter on the keyboard updates the currentSelectedSquare and increments the currentSelectedSquare index accordingly.
+User Guess Storage: Store the user's guess as an array of letters. The keyboard, once implemented, should update the corresponding index in this array based on the currently selected number or state.
 
-6. Submit Button Functionality: Develop a submit button that, when clicked, converts the UserGuessArray into a string and compares it with the correct answer. If the answer is correct, trigger a pop-up notification.
+Letter Display in Squares: Each letter square should display its letter based on the corresponding index in the UserGuessArray.
 
-7. Clue Implementation: Decide on and implement the method for providing hints or additional clues to users.
+Submit and Check Answer: Implement functionality to convert the UserGuessArray into a string upon submission. Compare this string with the correctAnswer. If they match, proceed with the appropriate action.
+
+Create Keyboard & Letter Components: Develop the on-screen keyboard and individual letter components to facilitate user input.
+
+Keyboard Letter Components Functionality: Ensure that selecting a letter on the keyboard updates the currentSelectedSquare and increments the currentSelectedSquare index accordingly.
+
+Submit Button Functionality: Develop a submit button that, when clicked, converts the UserGuessArray into a string and compares it with the correct answer. If the answer is correct, trigger a pop-up notification.

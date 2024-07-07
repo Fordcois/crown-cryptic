@@ -1,3 +1,8 @@
+:root {
+  /* Colours As Variables */
+  --ESBlack: #000000;
+}
+
 .LetterContainer{
   display: flex;
 }
@@ -5,17 +10,35 @@
 .Letter{
   border: 1px solid black;
   height: 20px;
-  width: 100px;
+  width: 50px;
+  text-align: center;
 }
 
 .SelectedLetter{
   border: 1px solid red;
+  background-color: rgb(185, 187, 146);
   height: 20px;
-  width: 100px;
-
+  width: 50px;
+  color: aliceblue;
+  text-align: center;
 }
 
 .Keyboard{
   background-color: black;
   color: aliceblue;
+}
+
+.KeyboardLetter{
+  width: 20px;
+  height: 20px;
+  background-color: rgb(11, 4, 144);
+}
+.KeyboardLetter:hover{
+  width: 20px;
+  height: 20px;
+  background-color: rgb(11, 94, 162);
+}
+
+.KeyboardRow{
+display: flex;
 }
