@@ -31,20 +31,57 @@ npm run dev
 
 ## Future Development Tasks
 
-1. **Organise Storage of Questions, Answers, and Clues as JSON** Create a structured way to store questions, answers, and clues in a JSON format, making it easy to retrieve and use them based on the date.
+### Keyboard Delete Button
+While you can currently overwrite letters, many similar online games offer a way to delete characters. We should implement this functionality. It should work similarly to the keyboard letter function but decrease the selected index to move the cursor backward.
+
+### Development of Clues & Letters
+
+Currently, players can request the definition as a clue, and there's functionality to track the number of letters requested. Both are displayed in the solved puzzle pop-up, but these features need further development.
+
+#### Clues
+The clue for the puzzle will consist of giving the definition. This should be styled as in the FIGMA mockup. One approach to achieve this is to have a function that takes the question and the definition and returns the clue as three strings: (PreDefinition)(Definition), and (PostDefinition). CSS styles can then be applied to the definition depending on whether the clue is revealed. Given the structure of cryptic crossword puzzles, either the pre or post definition will often be blank. This approach allows for targeted CSS application within the clue.
+
+#### Letters
+Currently, there is no system beyond counting the letters. This needs to be implemented. Given letters also need to be distinguished and unchangeable. This could be stored in a separate array, and when a letter is attempted to be updated, if the GivenLetterIndex is in the array, no change occurs.
+
+### Discussions
+#### How Should Letters Be Given?
+- **Randomized**: This can be unfair as each clue might not be the same for each player depending on the letters given meaning that 3 clues for one player may be different to using 3 clues for another player.
+- **Patterned**: Consistent for each player, although not necessarily useful in solving the clue.
+- **Player Selection**: Adds an element of skill as players choose which letter to ask for - After discussion this is probably the one we will move forward with
 
 
-2. **Clue Implementation** Develop a system for providing hints or additional clues to the users to aid in solving the puzzle.
+### Functionality for Displaying a Different Question Each Day
+The site should display a different question daily. To achieve this, we can track the date the site went live and subtract the current date from this to use the number of days as an index in our JSON.
 
-3. **Clue Letters** Ensure that letters provided as clues are fixed and cannot be altered by the user once provided 
+### Share Button
+A key part of the site is shareability, allowing users to share their results with friends and generate visibility for the site. We envision a shareable graphic for communication apps, similar to the following:
+```
+I Solved Crown Cryptic 09/07
+🟦🟨🟦🟨🟦
+🅰️ 2 Letters Given
+🔍 Clue Used
+```
 
-4. **When Puzzle is Solved - Pop-up Display** Create a pop-up notification when the puzzle is solved that includes a shareable message highlighting the solution and the clues used.
+The squares represent the length of the word, given letters, and clues used.
 
-5. **CSS & Styling** Improve the visual design and user experience of the application.
+On mobile, there appears to be a separate menu that shows up instead of just copying to the clipboard. This needs further investigation.
+
 
 ## Development Log
 <details>
 
+<summary><b>9th July</b></summary>
+
+**Organize Storage of Questions, Answers, and Clues as JSON**: Created a structured way to store questions, answers, and clues in JSON format.
+
+**Clue Implementation**: Users can request a clue, which provides them with the definition.
+
+**Solved Puzzle Pop-up Display**: A pop-up appears when the puzzle is solved, showing how many clues and letters were used to get the correct answer.
+
+</details>
+
+<details>
 <summary><b>7th July</b></summary>
 
 **User Guess Storage** Stored the user's guess as an array of letters. The keyboard, once implemented, should update the corresponding index in this array based on the currently selected number or state.
