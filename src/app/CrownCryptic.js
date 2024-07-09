@@ -2,16 +2,23 @@
 import { useState } from "react";
 import LetterSquare from "@/components/LetterSquare"
 import Keyboard from "@/components/keyboard";
-
+import PuzzleSolvedPopUp from "@/components/PuzzleSolvedPopUp";
+import data from '@/resources/questionData.json'
 
 const CrownCryptic = () => {
 
-const CorrectAnswer='CORRECT'
+const dayPuzzleData = data[0]
+
+const question = dayPuzzleData.clue;
+const definition = dayPuzzleData.definition;
+const CorrectAnswer=dayPuzzleData.answer;
 const splitAnswer = CorrectAnswer.split('')
 const answerLength = (splitAnswer.length)
 const [currentSelectedSquare,setcurrentSelectedSquare] = useState(0)
 const [userGuessArray,setuserGuessArray] = useState(Array(answerLength))
 const [puzzleSolved,setpuzzleSolved] = useState(false)
+const [showDefinition,setshowDefinition] = useState(false)
+const [lettersGiven,setslettersGiven] = useState(0)
 
 const checksGuessIsCorrect = () => {
 if (userGuessArray.join('') === CorrectAnswer) 
@@ -27,12 +34,27 @@ const setIndextoLetter = (letter) => {
     }
     }
 
+const getDefinition = () => {
+    setshowDefinition(true);
+}
+
 return (
     <div>
+    {puzzleSolved &&
+     <PuzzleSolvedPopUp ClueUsed={showDefinition} lettersGiven={lettersGiven}/>
+    }
+    <b>Question:</b> {question}<br/>
+    {
+    showDefinition &&
+    <span>
+    <b>Definition:</b> {definition}<br/>
+    </span>
+    }
     <b>Correct Answer:</b> {CorrectAnswer}<br/>
     <b>Puzzle Solved:</b> {puzzleSolved.toString()}<br/>
     <b>Answer Length:</b> {answerLength}<br/>
     <b>Current Selected Index:</b> {currentSelectedSquare}<br/>
+
 
     <div className="LetterContainer">
 
@@ -42,9 +64,10 @@ return (
         </span>
     ))}
 
+    <button onClick={()=>getDefinition()}>Clue</button>
     </div>
         <Keyboard passedFunc={setIndextoLetter}/>
-    <button value='Check'  onClick={()=>checksGuessIsCorrect()}> Check Answer is Correct</button>
+    <button  onClick={()=>checksGuessIsCorrect()}> Check Answer is Correct</button>
     </div>
     )
 };
