@@ -1,6 +1,7 @@
 :root {
   /* Colours As Variables */
   --ESBlack: #000000;
+  --CCYellow:#c9b350;
 }
 
 .LetterContainer{
@@ -41,6 +42,27 @@
 
 .KeyboardRow{
 display: flex;
+}
+
+/* Revealed Definition CSS */
+.RevealedDefinition {
+  position: relative;
+  display: inline-block;
+  background-color: var(--CCYellow); 
+  padding: 0 2px;
+  border-radius: 3px;
+  transition: all 0.5s ease-out; /* Smooth transition for the reveal */
+}
+
+.RevealedDefinition::before {
+  content: "DEFINITION";
+  position: absolute;
+  top: -15px; /* Adjust this value based on your needs */
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--CCYellow); /* Text color */
+  padding: 2px;
+  font-size: 12px; /* Adjust the font size as needed */
 }
 
 /* PopUp Window */

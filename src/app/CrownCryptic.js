@@ -53,7 +53,11 @@ return (
     <b>Puzzle Solved:</b> {puzzleSolved.toString()}<br/>
     <b>Answer Length:</b> {answerLength}<br/>
     <b>Current Selected Index:</b> {currentSelectedSquare}<br/>
-
+    <b>Example of a Question Structure:</b> <br/>
+    
+    <div style={{ marginTop: '20px', marginBottom:'20px' }}>
+        <span>WORDS WORDS WORDS WORDS </span> <span className={showDefinition ? "RevealedDefinition" : ""}>WORDS </span>
+    </div>
 
     <div className="LetterContainer">
 
