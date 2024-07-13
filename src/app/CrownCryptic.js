@@ -19,6 +19,8 @@ const [puzzleSolved,setpuzzleSolved] = useState(false)
 const [showDefinition,setshowDefinition] = useState(false)
 const [lettersGiven,setslettersGiven] = useState(0)
 
+
+
 const checksGuessIsCorrect = () => {
 if (userGuessArray.join('') === CorrectAnswer) 
     {setpuzzleSolved(true)}
@@ -37,27 +39,44 @@ const getDefinition = () => {
     setshowDefinition(true);
 }
 
+const seperateDefinitionFromQuestion = () => {
+    const defFirstIndex = question.indexOf(definition)
+    const defLastIndex = defFirstIndex + definition.length
+    return [question.slice(0,defFirstIndex),question.slice(defFirstIndex,defLastIndex),question.slice(defLastIndex)]
+}
+
+const [questionPreDef,questionDef,questionPostDef] = seperateDefinitionFromQuestion()
+
+
+
 return (
     <div>
     {puzzleSolved &&
-     <PuzzleSolvedPopUp ClueUsed={showDefinition} lettersGiven={lettersGiven}/>
+    <PuzzleSolvedPopUp ClueUsed={showDefinition} lettersGiven={lettersGiven}/>
     }
-    <b>Question:</b> {question}<br/>
-    {
+
+
+
+    <b>Question:</b><br/>
+    <div style={{ marginTop: '20px', marginBottom:'20px' }}> 
+        <span>{questionPreDef}</span>
+        <span className={showDefinition ? "RevealedDefinition" : ""}>{questionDef}</span>
+        <span>{questionPostDef}</span>
+    </div>
+   
+    {/* {
     showDefinition &&
     <span>
     <b>Definition:</b> {definition}<br/>
     </span>
-    }
+    } */}
     <b>Correct Answer:</b> {CorrectAnswer}<br/>
     <b>Puzzle Solved:</b> {puzzleSolved.toString()}<br/>
     <b>Answer Length:</b> {answerLength}<br/>
     <b>Current Selected Index:</b> {currentSelectedSquare}<br/>
     <b>Example of a Question Structure:</b> <br/>
     
-    <div style={{ marginTop: '20px', marginBottom:'20px' }}>
-        <span>WORDS WORDS WORDS WORDS </span> <span className={showDefinition ? "RevealedDefinition" : ""}>WORDS </span>
-    </div>
+
 
     <div className="LetterContainer">
 
