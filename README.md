@@ -1,5 +1,3 @@
-TEST
-
 # Crown Cryptic
 
 Crown Cryptic is an in development web application designed to challenge users with a daily cryptic crossword clue. Inspired by the success of word-based games like Wordle, Crown Cryptic provides a fun and engaging way to solve cryptic crossword clues every day. 
@@ -40,7 +38,7 @@ While you can currently overwrite letters, many similar online games offer a way
 
 Currently, players can request the definition as a clue, and there's functionality to track the number of letters requested. Both are displayed in the solved puzzle pop-up, but these features need further development.
 
-#### Clues
+#### Clues - COMPLETE
 The clue for the puzzle will consist of giving the definition. This should be styled as in the FIGMA mockup. One approach to achieve this is to have a function that takes the question and the definition and returns the clue as three strings: (PreDefinition)(Definition), and (PostDefinition). CSS styles can then be applied to the definition depending on whether the clue is revealed. Given the structure of cryptic crossword puzzles, either the pre or post definition will often be blank. This approach allows for targeted CSS application within the clue.
 
 #### Letters

@@ -1,7 +1,7 @@
-const PuzzleSolvedPopUp = ({ClueUsed,lettersGiven}) => {
+const PuzzleSolvedPopUp = ({ClueUsed,letterHintsGiven}) => {
 
 const cluesUsed = ClueUsed? '1':'0';
-const lettersUsed = lettersGiven
+const letterHintsUsed = letterHintsGiven
 
 return (
         <div className='PopUpShade'>
@@ -10,7 +10,7 @@ return (
             <br/>
             {cluesUsed} Clues Used
             <br/>
-            {lettersUsed} Letters Given
+            {letterHintsUsed} Letters Given
             <br/>
             Share
           </div>

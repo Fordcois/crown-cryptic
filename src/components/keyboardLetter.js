@@ -1,7 +1,7 @@
-const KeyboardLetter = ({ keyboardLetter,passedFunc}) => {
+const KeyboardLetter = ({ keyboardLetter,setUserGuessArrayIndexToLetter}) => {
 
 return (
-<div className='KeyboardLetter' onClick={()=>passedFunc(keyboardLetter)}>
+<div className='KeyboardLetter' onClick={()=> {setUserGuessArrayIndexToLetter(keyboardLetter)}}>
     {keyboardLetter}
 </div>
 );
