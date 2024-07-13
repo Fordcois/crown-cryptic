@@ -97,7 +97,7 @@ return (
 
     {Array.from({length: answerLength }).map((_, index) => (
         <span key={index} onClick={() => { setcurrentSelectedSquare(index) }}>
-            <LetterSquare currentLetter={userGuessArray[index]} currentSelectedSquare={currentSelectedSquare} letterIndex={index} />
+            <LetterSquare currentLetter={userGuessArray[index]} currentSelectedSquare={currentSelectedSquare} letterIndex={index} revealedThroughHint={indexesGivenAsHint.includes(index)}/>
         </span>
     ))}
 
@@ -106,9 +106,7 @@ return (
         <Keyboard setUserGuessArrayIndexToLetter={setUserGuessArrayIndexToLetter}/>
         <button  onClick={()=>revealSelectedLetterAsHint()}> Get Letter Hint</button> <br/>
     <button  onClick={()=>checksGuessIsCorrect()}> Check Answer is Correct</button><br/>
-    <button  onClick={()=>moveCurrentSelectedSquareBy(1)}> Move Current Selected Square +1</button><br/>
-    <button  onClick={()=>moveCurrentSelectedSquareBy(-1)}> Move Current Selected Square -1</button><br/>
-    
+
     
     </div>
     )
