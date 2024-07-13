@@ -1,13 +1,13 @@
 "use client"; 
 import { useState } from 'react';
 
-const LetterSquare = ({ currentLetter,currentSelectedSquare,letterIndex }) => {
+const LetterSquare = ({ currentLetter,currentSelectedSquare,letterIndex,revealedThroughHint }) => {
 
 const selectedLetter = (currentSelectedSquare == letterIndex);
 
 return (
 <div className={selectedLetter ? "SelectedLetter" : "Letter"}>
-    {currentLetter}
+    <span className={revealedThroughHint ? "RevealedLetter" : ""} >{currentLetter}</span>
 </div>
 );
 }
