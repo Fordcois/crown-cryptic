@@ -30,7 +30,11 @@ if (userGuessArray.join('') === CorrectAnswer)
 const moveCurrentSelectedSquareBy = (movement) => {
     let potentialNewSquare = currentSelectedSquare + movement;
     if ((potentialNewSquare >= 0) && (potentialNewSquare < answerLength)) {
-        setcurrentSelectedSquare(currentSelectedSquare + movement);
+        if (!indexesGivenAsHint.includes(potentialNewSquare)) {
+            setcurrentSelectedSquare(currentSelectedSquare + movement);
+        } else {
+            moveCurrentSelectedSquareBy(movement += movement);
+        }
     }
 }
 
@@ -66,6 +70,11 @@ const revealSelectedLetterAsHint = () => {
         }
 }
 
+const selectLetterSquare = (index) => {
+    if (!indexesGivenAsHint.includes(index)) {
+        setcurrentSelectedSquare(index)
+    }
+}
 
 return (
     <div>
@@ -96,7 +105,7 @@ return (
     <div className="LetterContainer">
 
     {Array.from({length: answerLength }).map((_, index) => (
-        <span key={index} onClick={() => { setcurrentSelectedSquare(index) }}>
+        <span key={index} onClick={() => { selectLetterSquare(index) }}>
             <LetterSquare currentLetter={userGuessArray[index]} currentSelectedSquare={currentSelectedSquare} letterIndex={index} revealedThroughHint={indexesGivenAsHint.includes(index)}/>
         </span>
     ))}
