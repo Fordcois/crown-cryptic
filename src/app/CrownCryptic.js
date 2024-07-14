@@ -31,7 +31,7 @@ const moveCurrentSelectedSquareBy = (movement) => {
     let potentialNewSquare = currentSelectedSquare + movement;
     if ((potentialNewSquare >= 0) && (potentialNewSquare < answerLength)) {
         if (!indexesGivenAsHint.includes(potentialNewSquare)) {
-            setcurrentSelectedSquare(currentSelectedSquare + movement);
+            setcurrentSelectedSquare(potentialNewSquare);
         } else {
             moveCurrentSelectedSquareBy(movement += (Math.sign(movement)));
         }

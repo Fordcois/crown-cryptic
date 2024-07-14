@@ -34,23 +34,6 @@ npm run dev
 ### Keyboard Delete Button
 While you can currently overwrite letters, many similar online games offer a way to delete characters. We should implement this functionality. It should work similarly to the keyboard letter function but decrease the selected index to move the cursor backward.
 
-### Development of Clues & Letters
-
-Currently, players can request the definition as a clue, and there's functionality to track the number of letters requested. Both are displayed in the solved puzzle pop-up, but these features need further development.
-
-#### Clues - COMPLETE
-The clue for the puzzle will consist of giving the definition. This should be styled as in the FIGMA mockup. One approach to achieve this is to have a function that takes the question and the definition and returns the clue as three strings: (PreDefinition)(Definition), and (PostDefinition). CSS styles can then be applied to the definition depending on whether the clue is revealed. Given the structure of cryptic crossword puzzles, either the pre or post definition will often be blank. This approach allows for targeted CSS application within the clue.
-
-#### Letters
-Currently, there is no system beyond counting the letters. This needs to be implemented. Given letters also need to be distinguished and unchangeable. This could be stored in a separate array, and when a letter is attempted to be updated, if the GivenLetterIndex is in the array, no change occurs.
-
-### Discussions
-#### How Should Letters Be Given?
-- **Randomized**: This can be unfair as each clue might not be the same for each player depending on the letters given meaning that 3 clues for one player may be different to using 3 clues for another player.
-- **Patterned**: Consistent for each player, although not necessarily useful in solving the clue.
-- **Player Selection**: Adds an element of skill as players choose which letter to ask for - After discussion this is probably the one we will move forward with
-
-
 ### Functionality for Displaying a Different Question Each Day
 The site should display a different question daily. To achieve this, we can track the date the site went live and subtract the current date from this to use the number of days as an index in our JSON.
 
@@ -67,8 +50,26 @@ The squares represent the length of the word, given letters, and clues used.
 
 On mobile, there appears to be a separate menu that shows up instead of just copying to the clipboard. This needs further investigation.
 
+### Keyboard Input
+Currently, input is received via an on-screen keyboard made of separate components. It is worthwhile to explore enabling physical keyboard input when the application is used on desktop. Research is needed to determine how this can be implemented, particularly to prevent the mobile phone keyboard from appearing when the site is viewed on mobile devices.
 
 ## Development Log
+
+<details>
+<summary><b>13th July</b></summary>
+
+Session's focus was on developing the clue features for the game. This involved implementing the features themselves and considering UX elements, such as making revealed letters unselectable.
+
+**Definition**: The daily puzzle clue involves revealing the definition. This is managed by a function that extracts the CLUE and DEFINITION from the JSON file. It separates them into three distinct strings: `questionPreDef`, `questionDef`, and `questionPostDef`. The Pre and Post segments have regular CSS applied, while the Definition segment can optionally have a RevealedDefinition CSS class applied depending on the status of `showDefinition`.
+
+**Letters**: Implemented a system allowing users to use a letter clue to reveal the currently selected letter. Letters given are now unchangeable and cannot be manually selected or selected by the cursor. This is achieved by storing the indices of revealed letters in an array. This array allows us to quickly check if a given index is already revealed.
+
+Upon completion of the puzzle the length of the lettersGiven Array as well as the status of `showDefinition` is passed through which forms part of the score.
+
+**moveCurrentSelectedSquareBy**: This function was now abstracted from the previous `setUserGuessArrayIndexToLetter` making the checking of RevealedLetters easier but also allowing for the development of the Delete function.
+
+</details>
+
 <details>
 
 <summary><b>9th July</b></summary>
