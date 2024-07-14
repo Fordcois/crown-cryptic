@@ -33,7 +33,7 @@ const moveCurrentSelectedSquareBy = (movement) => {
         if (!indexesGivenAsHint.includes(potentialNewSquare)) {
             setcurrentSelectedSquare(currentSelectedSquare + movement);
         } else {
-            moveCurrentSelectedSquareBy(movement += movement);
+            moveCurrentSelectedSquareBy(movement += (Math.sign(movement)));
         }
     }
 }
