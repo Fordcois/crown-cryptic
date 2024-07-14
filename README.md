@@ -2,8 +2,7 @@
 
 Crown Cryptic is an in development web application designed to challenge users with a daily cryptic crossword clue. Inspired by the success of word-based games like Wordle, Crown Cryptic provides a fun and engaging way to solve cryptic crossword clues every day. 
 
-This project is a collaboration between [Sam Ford](https://github.com/Fordcois) & [Rachel Roberts](https://github.com/Rachel853)
-.
+This project is a collaboration between [Sam Ford](https://github.com/Fordcois) & [Rachel Roberts](https://github.com/Rachel853).
 
 You can explore our design and planning documents here:
 
@@ -31,6 +30,9 @@ npm run dev
 
 ## Future Development Tasks
 
+### Clear Button
+Intergrate a button to clear all user typed letters while maintaining letters given as clues
+
 ### Keyboard Delete Button
 While you can currently overwrite letters, many similar online games offer a way to delete characters. We should implement this functionality. It should work similarly to the keyboard letter function but decrease the selected index to move the cursor backward.
 
@@ -52,6 +54,15 @@ On mobile, there appears to be a separate menu that shows up instead of just cop
 
 ### Keyboard Input
 Currently, input is received via an on-screen keyboard made of separate components. It is worthwhile to explore enabling physical keyboard input when the application is used on desktop. Research is needed to determine how this can be implemented, particularly to prevent the mobile phone keyboard from appearing when the site is viewed on mobile devices.
+
+### Store Progress in Cookies
+Currently, progress is wiped when the page is reloaded, which is not ideal for a game that focuses on sharing results. To improve this, we can store each day's puzzle progress in a cookie, ensuring that the puzzle is only playable once.
+
+### Streak Option
+A way to track the users current streak of solving the daily progress
+
+### Expand Daily Questions
+Instead of having a single question each day, we can introduce a small grid with multiple questions to provide a more engaging and varied experience. This can also although for a daily theme 
 
 ## Development Log
 
