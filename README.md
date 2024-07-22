@@ -8,6 +8,13 @@ You can explore our design and planning documents here:
 
 - [Live Design Document](https://hackmd.io/@cXzrcJerTQGszfvObYAayQ/CrownCrypticDesign)
 - [Figma Mock-ups](https://www.figma.com/proto/MU6UagXDGSGhVlMFicNLFC/Crown-Cryptic?node-id=1-5&t=ta966i64D5ILQSvX-1)
+- <details>
+    <summary>Architecture Planning Diagram</summary>
+    
+    ![Architecture Planning Diagram](public/CrownCrypticDiagram.png)
+  </details>
+
+
 
 ## Getting Started
 
