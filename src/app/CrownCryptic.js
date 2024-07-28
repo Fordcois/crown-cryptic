@@ -7,8 +7,11 @@ import data from '@/resources/questionData.json';
 
 const CrownCryptic = () => {
 
-    const dayPuzzleData = data[0]
+    const startDate = new Date(2024,6,8);
+    const todaysDate = new Date();
+    const daysElapsed = Math.floor(todaysDate-startDate / 86400000);
 
+    const dayPuzzleData = data[daysElapsed];
     const question = dayPuzzleData.clue;
     const definition = dayPuzzleData.definition;
     const CorrectAnswer=dayPuzzleData.answer;
