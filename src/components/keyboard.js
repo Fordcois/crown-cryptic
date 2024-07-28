@@ -37,6 +37,7 @@ const Keyboard = ({setUserGuessArrayIndexToLetter}) => {
         <KeyboardLetter keyboardLetter={'B'} setUserGuessArrayIndexToLetter={setUserGuessArrayIndexToLetter}/>
         <KeyboardLetter keyboardLetter={'N'} setUserGuessArrayIndexToLetter={setUserGuessArrayIndexToLetter}/>
         <KeyboardLetter keyboardLetter={'M'} setUserGuessArrayIndexToLetter={setUserGuessArrayIndexToLetter}/>
+        <button onClick={() => setUserGuessArrayIndexToLetter("")}>Delete</button>
       </div>
     </div>
   );
