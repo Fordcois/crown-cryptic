@@ -37,14 +37,6 @@ npm run dev
 
 ## Future Development Tasks
 
-### Clear Button
-Intergrate a button to clear all user typed letters while maintaining letters given as clues
-
-### Keyboard Delete Button
-While you can currently overwrite letters, many similar online games offer a way to delete characters. We should implement this functionality. It should work similarly to the keyboard letter function but decrease the selected index to move the cursor backward.
-
-### Functionality for Displaying a Different Question Each Day
-The site should display a different question daily. To achieve this, we can track the date the site went live and subtract the current date from this to use the number of days as an index in our JSON.
 
 ### Share Button
 A key part of the site is shareability, allowing users to share their results with friends and generate visibility for the site. We envision a shareable graphic for communication apps, similar to the following:
@@ -53,11 +45,12 @@ I Solved Crown Cryptic 09/07
 🟦🟨🟦🟨🟦
 🅰️ 2 Letters Given
 🔍 Clue Used
+www.CrownCryptic.Com
 ```
 
 The squares represent the length of the word, given letters, and clues used.
 
-On mobile, there appears to be a separate menu that shows up instead of just copying to the clipboard. This needs further investigation.
+We are currently using a library for this functionality although due to changes in the popularity of sites and limited options for custom designs we want to look at constructing our down share component.
 
 ### Keyboard Input
 Currently, input is received via an on-screen keyboard made of separate components. It is worthwhile to explore enabling physical keyboard input when the application is used on desktop. Research is needed to determine how this can be implemented, particularly to prevent the mobile phone keyboard from appearing when the site is viewed on mobile devices.
@@ -72,6 +65,22 @@ A way to track the users current streak of solving the daily progress
 Instead of having a single question each day, we can introduce a small grid with multiple questions to provide a more engaging and varied experience. This can also although for a daily theme 
 
 ## Development Log
+
+<details>
+<summary><b>28th July</b></summary>
+
+**Displaying a Different Question Each Day**: The main feature of our site is to display a different question each day. Although we have a large dataset (and a method to clean it), we initially lacked a way to rotate the questions daily. We solved this by using simple calculations based on dates.
+
+We use two dates: the date the site goes live and today's date. In JavaScript, these are stored as millisecond values. By subtracting the site's start date from today's date, we obtain the number of milliseconds that have passed. We then floor divide this by the number of milliseconds in a day (86,400,000) to count how many days have passed. This number is used as an index for our JSON dataset, enabling easy and automatic updating of the displayed questions.
+
+We also added some smaller features to improve the site's usability, particularly for deleting a word:
+
+**Clear Button**: The Clear button completely wipes the word, apart from the given letters. It also resets your selected square to the earliest available square.
+
+**Keyboard Delete Button**: The Keyboard Delete button deletes the last letter in the word and moves the cursor backward. This is an enhancement of the typing function. If the deleted letter is blank, the cursor moves backward instead of forward, with consideration for 'locked-in letters'.
+
+While these features are smaller in scope than some of our previous developments, they significantly enhance the intuitive nature of the site, which is the driving force behind our design.
+</details>
 
 <details>
 <summary><b>13th July</b></summary>
