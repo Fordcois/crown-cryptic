@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LetterSquare from "@/components/LetterSquare";
 import Keyboard from "@/components/keyboard";
 import PuzzleSolvedPopUp from "@/components/PuzzleSolvedPopUp";
 import data from "@/resources/questionData.json";
 
 const CrownCryptic = () => {
+
   const startDate = new Date(2024, 6, 28);
   const todaysDate = new Date();
   const daysElapsed = Math.floor((todaysDate - startDate) / 86400000);
@@ -14,13 +15,59 @@ const CrownCryptic = () => {
   const question = dayPuzzleData.clue;
   const definition = dayPuzzleData.definition;
   const CorrectAnswer = dayPuzzleData.answer;
+
   const answerLength = CorrectAnswer.split("").length;
+
   const [currentSelectedSquare, setcurrentSelectedSquare] = useState(0);
   const [userGuessArray, setuserGuessArray] = useState(Array(answerLength));
   const [showDefinition, setshowDefinition] = useState(false);
   const [indexesGivenAsHint, setindexesGivenAsHint] = useState([]);
   const [puzzleSolved, setpuzzleSolved] = useState(false);
   const [emojiResults, setemojiResults] = useState("");
+
+
+  const checkDays = () => {
+
+    const storedDaysElapsed = localStorage.getItem("storedDaysElapsed");
+    if (storedDaysElapsed) {
+
+      if (Number(storedDaysElapsed) === daysElapsed) {
+        const storedUserGuessArray = localStorage.getItem("storedUserGuessArray");
+
+        if (storedUserGuessArray) {
+          setuserGuessArray(storedUserGuessArray.split(","));
+        };
+
+        const storedIndexesGivenAsHint = localStorage.getItem("storedIndexesGivenAsHint");
+        if (storedIndexesGivenAsHint) {
+          setindexesGivenAsHint(storedIndexesGivenAsHint.split(",").map(Number));
+        };
+
+        setshowDefinition(
+          localStorage.getItem("storedShowDefinition") == "true" ? true : false
+        );
+
+        setpuzzleSolved(localStorage.getItem("storedPuzzleSolved") == "true" ? true : false);
+
+      } else {
+        localStorage.clear();
+        localStorage.setItem("storedDaysElapsed", daysElapsed);
+      };
+
+    } else {
+      localStorage.setItem("storedDaysElapsed", daysElapsed);
+      localStorage.setItem("storedUserGuessArray", userGuessArray);
+      localStorage.setItem("storedShowDefinition", showDefinition);
+      localStorage.setItem("storedIndexesGivenAsHint", indexesGivenAsHint);
+      localStorage.setItem("storedPuzzleSolved", puzzleSolved);
+    };
+  };
+
+
+  useEffect(() => {
+    checkDays();
+  }, []);
+
 
   const moveCurrentSelectedSquareBy = (movement) => {
     let potentialNewSquare = currentSelectedSquare + movement;
@@ -38,12 +85,14 @@ const CrownCryptic = () => {
       let newArray = [...userGuessArray];
       newArray[currentSelectedSquare] = letter;
       setuserGuessArray(newArray);
+      localStorage.setItem("storedUserGuessArray", newArray);
     }
     moveCurrentSelectedSquareBy(letter === "" ? -1 : +1);
   };
 
   const getDefinition = () => {
     setshowDefinition(true);
+    localStorage.setItem("storedShowDefinition", true);
   };
 
   const seperateDefinitionFromQuestion = () => {
@@ -60,11 +109,11 @@ const CrownCryptic = () => {
 
   const revealSelectedLetterAsHint = () => {
     if (!indexesGivenAsHint.includes(currentSelectedSquare)) {
-      console.log("Hint Used");
       let newIndexesGivenAsHint = [...indexesGivenAsHint];
       newIndexesGivenAsHint.push(currentSelectedSquare);
       setUserGuessArrayIndexToLetter(CorrectAnswer[currentSelectedSquare]);
       setindexesGivenAsHint(newIndexesGivenAsHint);
+      localStorage.setItem("storedIndexesGivenAsHint", newIndexesGivenAsHint);
     }
   };
 
@@ -78,6 +127,7 @@ const CrownCryptic = () => {
     if (userGuessArray.join("") === CorrectAnswer) {
       captureResults();
       setpuzzleSolved(true);
+      localStorage.setItem("storedPuzzleSolved", true);
     }
   };
 
@@ -109,7 +159,18 @@ const CrownCryptic = () => {
       }
     }
     setuserGuessArray(clearedGuesses);
+    localStorage.setItem("storedUserGuessArray", clearedGuesses);
     setcurrentSelectedSquare(firstEmptyIndex);
+  };
+
+  const setLocalStorage = () => {
+    const dataStore = { breed: "dog", name: "Cleo" };
+    localStorage.setItem("petInfo", JSON.stringify(dataStore));
+  };
+
+  const getLocalStorage = () => {
+    const info = JSON.parse(localStorage.getItem("petInfo"));
+    console.log("Our pet ", info.breed, " is called ", info.name);
   };
 
   return (
@@ -162,6 +223,8 @@ const CrownCryptic = () => {
             />
           </span>
         ))}
+        <button onClick={() => setLocalStorage()}>Local Storage</button>
+        <button onClick={() => getLocalStorage()}>Get Local Storage</button>
         <button onClick={() => getDefinition()}>Clue</button>
         <button onClick={() => clearGuess()}>Clear</button>
       </div>
