@@ -13,8 +13,7 @@
 }
 .ShareButton {
     padding: 10px 20px;
-    /* background-color: var(--ShareMidColour); */
-    background-color: blue;
+    background-color: var(--ShareMidColour);
     font-size: 16px;
     font-family: var(--ShareFont);
     text-transform: uppercase;
@@ -37,8 +36,7 @@
     font-family: var(--ShareFont);
     font-size: 0.75rem;
     text-transform: uppercase;
-    /* background-color: var(--ShareDarkColour); */
-    background-color: green;
+    background-color: var(--ShareDarkColour);
     color: white;
     text-align: center;
     border-radius: 6px;
@@ -63,14 +61,11 @@
     text-transform: uppercase;
     font-family: var(--ShareFont);
     color: var(--ShareMidColour);
-    background-color: red;
 }
 .Sharing-Icons{
     color: var(--ShareMidColour);
     font-size: 1.75rem;
     padding:5px;
-    background-color: yellow;
-    
 }
 .Sharing-Icons:hover{
     color: var(--ShareDarkColour);
