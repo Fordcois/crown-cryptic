@@ -163,15 +163,6 @@ const CrownCryptic = () => {
     setcurrentSelectedSquare(firstEmptyIndex);
   };
 
-  const setLocalStorage = () => {
-    const dataStore = { breed: "dog", name: "Cleo" };
-    localStorage.setItem("petInfo", JSON.stringify(dataStore));
-  };
-
-  const getLocalStorage = () => {
-    const info = JSON.parse(localStorage.getItem("petInfo"));
-    console.log("Our pet ", info.breed, " is called ", info.name);
-  };
 
   return (
     <div>
@@ -223,8 +214,6 @@ const CrownCryptic = () => {
             />
           </span>
         ))}
-        <button onClick={() => setLocalStorage()}>Local Storage</button>
-        <button onClick={() => getLocalStorage()}>Get Local Storage</button>
         <button onClick={() => getDefinition()}>Clue</button>
         <button onClick={() => clearGuess()}>Clear</button>
       </div>
