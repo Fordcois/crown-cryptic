@@ -1,6 +1,9 @@
 import { RWebShare } from "react-web-share";
+import ShareButton from "./ShareButton";
 
 const PuzzleSolvedPopUp = ({ClueUsed,letterHintsGiven, emojiResults}) => {
+  console.log("in pop up")
+  console.log(emojiResults)
 
 const cluesUsed = ClueUsed? '1':'0';
 const letterHintsUsed = letterHintsGiven;
@@ -24,7 +27,8 @@ const letterHintsUsed = letterHintsGiven;
           onClick={() => console.log("Shared successfully!")} 
         > 
           <button>Share</button> 
-        </RWebShare> 
+        </RWebShare>
+        <ShareButton emojiResults={emojiResults} cluesUsed={cluesUsed} letterHintsGiven={letterHintsGiven}></ShareButton> 
       </div>
     </div>
   );
