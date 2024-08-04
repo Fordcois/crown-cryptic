@@ -4,7 +4,6 @@ import LetterSquare from "@/components/LetterSquare";
 import Keyboard from "@/components/keyboard";
 import PuzzleSolvedPopUp from "@/components/PuzzleSolvedPopUp";
 import data from "@/resources/questionData.json";
-import { execOnce } from "next/dist/shared/lib/utils";
 
 const CrownCryptic = () => {
 

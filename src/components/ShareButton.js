@@ -4,20 +4,14 @@ import { FaXTwitter } from "react-icons/fa6";
 import '../app/shareButton.css'
 
 
-const ShareButton = ({emojiResults, cluesUsed, letterHintsGiven}) => {
-
-    console.log("in Share Button");
-    console.log(emojiResults);
-    console.log(cluesUsed);
-    console.log(letterHintsGiven);
-    
+const ShareButton = ({emojiResults, cluesUsed, clueSgOrPl, letterHintsGiven, letterSgOrPl}) => {
 
     const [isClickable, setIsClickable] = useState(true);
 
     const urlToShare = 'http://localhost:3000/'
     // const UrlTitleToShare = 'Samuel Ford - Full Stack Developer'
-    const messageToShareClipboard = "I Solved Crown Cryptic!" + "\n\n" + emojiResults + "\n\n🅰️ " + letterHintsGiven + " Letters Given\n\n 🔍 " + cluesUsed + " Clues Used\n\n"; 
-    const messageToShareSocials = "I Solved Crown Cryptic!" + "%0a%0a   " + emojiResults + "%0a%0a   🅰️ " + letterHintsGiven + " Letters Given%0a%0a   🔍 " + cluesUsed + " Clues Used%0a%0a";
+    const messageToShareClipboard = "I Solved Crown Cryptic!" + "\n\n" + emojiResults + "\n\n🅰️ " + letterHintsGiven + " " + letterSgOrPl + " Given\n\n 🔍 " + cluesUsed + " " + clueSgOrPl + " Used\n\n"; 
+    const messageToShareSocials = "I Solved Crown Cryptic!" + "%0a%0a   " + emojiResults + "%0a%0a   🅰️ " + letterHintsGiven + " " + letterSgOrPl + " Given%0a%0a   🔍 " + cluesUsed + " " + clueSgOrPl + " Used%0a%0a";
 
     const ShareFunction = () => {
         if (navigator.share){

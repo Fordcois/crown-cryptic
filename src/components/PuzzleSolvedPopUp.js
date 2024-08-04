@@ -1,34 +1,21 @@
-import { RWebShare } from "react-web-share";
 import ShareButton from "./ShareButton";
 
 const PuzzleSolvedPopUp = ({ClueUsed,letterHintsGiven, emojiResults}) => {
-  console.log("in pop up")
-  console.log(emojiResults)
 
-const cluesUsed = ClueUsed? '1':'0';
-const letterHintsUsed = letterHintsGiven;
+  const cluesUsed = ClueUsed? '1':'0';
+  const clueSgOrPl = cluesUsed == 1 ? "Clue" : "Clues";
+  const letterSgOrPl = letterHintsGiven == 1 ? "Letter" : "Letters";
 
   return (
     <div className='PopUpShade'>
       <div className='PopUpWindow'>
         <b>Puzzle Solved</b>
         <br/>
-        {cluesUsed} Clues Used
+        {letterHintsGiven} {letterSgOrPl} Given
         <br/>
-        {letterHintsUsed} Letters Given
+        {cluesUsed} {clueSgOrPl} Used
         <br/>
-        <RWebShare 
-          data={{ 
-            text: "I Solved Crown Cryptic!" + "%0a%0a   " + emojiResults + "%0a%0a   🅰️ " + letterHintsGiven + " Letters Given%0a%0a   🔍 " + cluesUsed + " Clues Used%0a%0a", 
-            url: "http://localhost:3000", 
-            title: "Crown Cryptic",
-            }
-          }
-          onClick={() => console.log("Shared successfully!")} 
-        > 
-          <button>Share</button> 
-        </RWebShare>
-        <ShareButton emojiResults={emojiResults} cluesUsed={cluesUsed} letterHintsGiven={letterHintsGiven}></ShareButton> 
+        <ShareButton emojiResults={emojiResults} cluesUsed={cluesUsed} clueSgOrPl={clueSgOrPl} letterHintsGiven={letterHintsGiven} letterSgOrPl={letterSgOrPl}></ShareButton> 
       </div>
     </div>
   );
