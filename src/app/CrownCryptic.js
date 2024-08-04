@@ -43,11 +43,11 @@ const CrownCryptic = () => {
           setindexesGivenAsHint(storedIndexesGivenAsHint.split(",").map(Number));
         };
 
-        setshowDefinition(
-          localStorage.getItem("storedShowDefinition") == "true" ? true : false
-        );
+        setshowDefinition(localStorage.getItem("storedShowDefinition") == "true" ? true : false);
 
         setpuzzleSolved(localStorage.getItem("storedPuzzleSolved") == "true" ? true : false);
+
+        setemojiResults(localStorage.getItem("storedEmojiResults"));
 
       } else {
         localStorage.clear();
@@ -60,6 +60,7 @@ const CrownCryptic = () => {
       localStorage.setItem("storedShowDefinition", showDefinition);
       localStorage.setItem("storedIndexesGivenAsHint", indexesGivenAsHint);
       localStorage.setItem("storedPuzzleSolved", puzzleSolved);
+      localStorage.setItem("storedEmojiResults", emojiResults);
     };
   };
 
@@ -143,6 +144,7 @@ const CrownCryptic = () => {
       }
     }
     setemojiResults(emojiString);
+    localStorage.setItem("storedEmojiResults", emojiString);
   };
 
   const clearGuess = () => {
@@ -163,15 +165,6 @@ const CrownCryptic = () => {
     setcurrentSelectedSquare(firstEmptyIndex);
   };
 
-  const setLocalStorage = () => {
-    const dataStore = { breed: "dog", name: "Cleo" };
-    localStorage.setItem("petInfo", JSON.stringify(dataStore));
-  };
-
-  const getLocalStorage = () => {
-    const info = JSON.parse(localStorage.getItem("petInfo"));
-    console.log("Our pet ", info.breed, " is called ", info.name);
-  };
 
   return (
     <div>
@@ -223,8 +216,6 @@ const CrownCryptic = () => {
             />
           </span>
         ))}
-        <button onClick={() => setLocalStorage()}>Local Storage</button>
-        <button onClick={() => getLocalStorage()}>Get Local Storage</button>
         <button onClick={() => getDefinition()}>Clue</button>
         <button onClick={() => clearGuess()}>Clear</button>
       </div>

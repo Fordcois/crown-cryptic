@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+:root {
+    --ShareLighest: #90a955;
+    --ShareHighlightColour: #4f772d;
+    --ShareMidColour: #31572c;
+    --ShareDarkColour: #132a13;
+    --ShareFont: "Oswald", sans-serif;
+}
+
+.ShareButton-container {
+    position: relative;
+    display: inline-block;
+}
+.ShareButton {
+    padding: 10px 20px;
+    background-color: var(--ShareMidColour);
+    font-size: 16px;
+    font-family: var(--ShareFont);
+    text-transform: uppercase;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    width: 150px;
+    border: none;
+}
+
+.ShareButton:hover {
+    background-color: var(--ShareDarkColour);
+    color: white;
+}
+
+.tooltip {
+    visibility: hidden;
+    opacity: 0;
+    width: 110px;
+    font-family: var(--ShareFont);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    background-color: var(--ShareDarkColour);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0px 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position the tooltip above the button */
+    left: 50%;
+    margin-left: -60px;
+    transform: translateY(10px); /* Start slightly below */
+    transition: opacity 0.3s, transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.tooltip.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* Move up to its original position */
+}
+
+.Socials-container{
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-family: var(--ShareFont);
+    color: var(--ShareMidColour);
+}
+.Sharing-Icons{
+    color: var(--ShareMidColour);
+    font-size: 1.75rem;
+    padding:5px;
+}
+.Sharing-Icons:hover{
+    color: var(--ShareDarkColour);
+}
