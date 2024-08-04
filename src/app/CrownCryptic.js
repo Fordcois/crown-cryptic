@@ -4,6 +4,7 @@ import LetterSquare from "@/components/LetterSquare";
 import Keyboard from "@/components/keyboard";
 import PuzzleSolvedPopUp from "@/components/PuzzleSolvedPopUp";
 import data from "@/resources/questionData.json";
+import { execOnce } from "next/dist/shared/lib/utils";
 
 const CrownCryptic = () => {
 
@@ -43,11 +44,11 @@ const CrownCryptic = () => {
           setindexesGivenAsHint(storedIndexesGivenAsHint.split(",").map(Number));
         };
 
-        setshowDefinition(
-          localStorage.getItem("storedShowDefinition") == "true" ? true : false
-        );
+        setshowDefinition(localStorage.getItem("storedShowDefinition") == "true" ? true : false);
 
         setpuzzleSolved(localStorage.getItem("storedPuzzleSolved") == "true" ? true : false);
+
+        setemojiResults(localStorage.getItem("storedEmojiResults"));
 
       } else {
         localStorage.clear();
@@ -60,6 +61,7 @@ const CrownCryptic = () => {
       localStorage.setItem("storedShowDefinition", showDefinition);
       localStorage.setItem("storedIndexesGivenAsHint", indexesGivenAsHint);
       localStorage.setItem("storedPuzzleSolved", puzzleSolved);
+      localStorage.setItem("storedEmojiResults", emojiResults);
     };
   };
 
@@ -143,6 +145,7 @@ const CrownCryptic = () => {
       }
     }
     setemojiResults(emojiString);
+    localStorage.setItem("storedEmojiResults", emojiString);
   };
 
   const clearGuess = () => {
