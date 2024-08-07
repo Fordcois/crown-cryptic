@@ -2,15 +2,16 @@
 import KeyboardLetter from "./keyboardLetter";
 import React, { useState, useEffect } from 'react';
 
-const Keyboard = ({setUserGuessArrayIndexToLetter,moveCurrentSelectedSquareBy,checksGuessIsCorrect}) => {
+const Keyboard = ({setUserGuessArrayIndexToLetter,moveCurrentSelectedSquareBy,checksGuessIsCorrect,puzzleSolved}) => {
 const [pressedKeys,setPressedKeys] = useState({})
 
 
 useEffect(() => {
+  if (!puzzleSolved){
   const handleKeyDown = (event) => {
     console.log('You Have Typed: ',event.key)
     const key = event.key.toUpperCase();
-    
+
     // Places keypresses into Array for styling to mimic keystokres
       setPressedKeys(prev => ({ ...prev, [key]: true }));
       setTimeout(() => {
@@ -38,7 +39,7 @@ useEffect(() => {
   };
 
   window.addEventListener('keydown', handleKeyDown);
-  return () => {window.removeEventListener('keydown', handleKeyDown);};
+  return () => {window.removeEventListener('keydown', handleKeyDown);};}
 });
 
   return (
