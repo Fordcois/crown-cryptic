@@ -1,9 +1,9 @@
-const KeyboardLetter = ({ keyboardLetter,setUserGuessArrayIndexToLetter}) => {
+const KeyboardLetter = ({ keyboardLetter,setUserGuessArrayIndexToLetter,pressed}) => {
 
 return (
-<div className='KeyboardLetter' onClick={()=> {setUserGuessArrayIndexToLetter(keyboardLetter)}}>
+<button className={pressed ? 'hitkeyboardLetter' : 'KeyboardLetter'} onClick={()=> {setUserGuessArrayIndexToLetter(keyboardLetter)}}>
     {keyboardLetter}
-</div>
+</button>
 );
 }
 

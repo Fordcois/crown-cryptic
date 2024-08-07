@@ -184,12 +184,6 @@ const CrownCryptic = () => {
         </span>
         <span>{questionPostDef}</span>
       </div>
-      {/* {
-            showDefinition &&
-            <span>
-            <b>Definition:</b> {definition}<br/>
-            </span>
-            } */}
       <b>Correct Answer:</b> {CorrectAnswer}
       <br />
       <b>Puzzle Solved:</b> {puzzleSolved.toString()}
@@ -221,6 +215,9 @@ const CrownCryptic = () => {
       </div>
       <Keyboard
         setUserGuessArrayIndexToLetter={setUserGuessArrayIndexToLetter}
+        moveCurrentSelectedSquareBy={moveCurrentSelectedSquareBy}
+        checksGuessIsCorrect={checksGuessIsCorrect}
+        puzzleSolved={puzzleSolved}
       />
       <button onClick={() => revealSelectedLetterAsHint()}>
         {" "}

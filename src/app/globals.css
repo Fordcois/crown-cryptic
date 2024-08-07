@@ -34,14 +34,39 @@
 }
 
 .KeyboardLetter{
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
+  border: none;
   background-color: rgb(11, 4, 144);
+  border-radius: 15px;
 }
 .KeyboardLetter:hover{
-  width: 20px;
-  height: 20px;
   background-color: rgb(11, 94, 162);
+}
+.KeyboardLetter:active, .hitkeyboardLetter{
+  width: 35px;
+  height: 35px;
+  border: none;
+  background-color: rgb(4, 144, 30);
+  border-radius: 15px;
+}
+
+.KeyboardLetterLong{
+  width: 60px;
+  height: 35px;
+  border: none;
+  background-color: rgb(11, 4, 144);
+  border-radius: 15px;
+}
+.KeyboardLetterLong:hover{
+  background-color: rgb(11, 94, 162);
+}
+.KeyboardLetterLong:active, .hitkeyboardLetterLong{
+  width: 60px;
+  height: 35px;
+  border: none;
+  background-color: rgb(4, 144, 30);
+  border-radius: 15px;
 }
 
 .KeyboardRow{
