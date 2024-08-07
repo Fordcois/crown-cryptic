@@ -5,7 +5,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Crown Cryptic",
-  description: "Crown Cryptic",
+  description: "Your Daily Dose of Cryptic",
+  keywords: ['Cryptic Crossword','Cryptic Clue','Cryptic','Crossword','Daily Puzzle'],
+  openGraph: {
+    locale: 'en_US',
+    type: 'website',
+  }
 };
 
 export default function RootLayout({ children }) {
