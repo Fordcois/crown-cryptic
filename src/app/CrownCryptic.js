@@ -221,6 +221,8 @@ const CrownCryptic = () => {
       </div>
       <Keyboard
         setUserGuessArrayIndexToLetter={setUserGuessArrayIndexToLetter}
+        moveCurrentSelectedSquareBy={moveCurrentSelectedSquareBy}
+        checksGuessIsCorrect={checksGuessIsCorrect}
       />
       <button onClick={() => revealSelectedLetterAsHint()}>
         {" "}
