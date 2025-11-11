@@ -114,3 +114,38 @@ display: flex;
   text-align: center;
   border-radius: 15px;
 }
+
+/* Styled Elements */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--White);
+  font-family: var(--TextFont);
+}
+
+.container{
+  background-color: #c9b350;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Header */
+.headerContainer{
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1%;
+}
+.titleText{
+  color: var(--CCYellow);
+}
+
+/* DIVS For displaying Content */
+.center{
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}

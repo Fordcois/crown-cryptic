@@ -7,7 +7,7 @@ import data from "@/resources/questionData.json";
 
 const CrownCryptic = () => {
 
-  const startDate = new Date(2024, 6, 28);
+  const startDate = new Date(2025, 10, 10);
   const todaysDate = new Date();
   const daysElapsed = Math.floor((todaysDate - startDate) / 86400000);
 
