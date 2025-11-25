@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 :root {
   /* Colours As Variables */
   --ESBlack: #000000;
   --CCYellow:#c9b350;
+  --KeyboardShadow:#837432;
+  --TextFont: "Koulen", sans-serif;
 }
 
 .LetterContainer{
@@ -29,19 +32,19 @@
 }
 
 .Keyboard{
-  background-color: black;
-  color: aliceblue;
+  text-align: center;
+  background-color: var(--CCYellow);
 }
 
 .KeyboardLetter{
   width: 35px;
   height: 35px;
+  box-shadow: 3px 3px 0px var(--KeyboardShadow);
+  border-radius: 20%;
   border: none;
-  background-color: rgb(11, 4, 144);
-  border-radius: 15px;
 }
-.KeyboardLetter:hover{
-  background-color: rgb(11, 94, 162);
+.KeyboardLetter:hover, .KeyboardLetterLong:hover{
+  box-shadow: none;
 }
 .KeyboardLetter:active, .hitkeyboardLetter{
   width: 35px;
@@ -49,18 +52,16 @@
   border: none;
   background-color: rgb(4, 144, 30);
   border-radius: 15px;
+  box-shadow: none;
 }
 
 .KeyboardLetterLong{
   width: 60px;
   height: 35px;
   border: none;
-  background-color: rgb(11, 4, 144);
   border-radius: 15px;
 }
-.KeyboardLetterLong:hover{
-  background-color: rgb(11, 94, 162);
-}
+
 .KeyboardLetterLong:active, .hitkeyboardLetterLong{
   width: 60px;
   height: 35px;
@@ -121,6 +122,7 @@ html, body {
   padding: 0;
   background-color: var(--White);
   font-family: var(--TextFont);
+  font-size: 1.25rem;
 }
 
 .container{
@@ -141,6 +143,9 @@ html, body {
 }
 .titleText{
   color: var(--CCYellow);
+  font-family: "Koulen", sans-serif;
+  font-weight: 400;
+  font-size: 2.5rem;
 }
 
 /* DIVS For displaying Content */

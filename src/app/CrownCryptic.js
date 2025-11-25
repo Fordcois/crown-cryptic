@@ -67,7 +67,7 @@ const CrownCryptic = () => {
 
   useEffect(() => {
     checkDays();
-  }, []);
+  });
 
 
   const moveCurrentSelectedSquareBy = (movement) => {
@@ -175,8 +175,6 @@ const CrownCryptic = () => {
           emojiResults={emojiResults}
         />
       )}
-      <b>Question:</b>
-      <br />
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
         <span>{questionPreDef}</span>
         <span className={showDefinition ? "RevealedDefinition" : ""}>
@@ -187,8 +185,6 @@ const CrownCryptic = () => {
       <b>Correct Answer:</b> {CorrectAnswer}
       <br />
       <b>Puzzle Solved:</b> {puzzleSolved.toString()}
-      <br />
-      <b>Answer Length:</b> {answerLength}
       <br />
       <b>Current Selected Index:</b> {currentSelectedSquare}
       <br />
