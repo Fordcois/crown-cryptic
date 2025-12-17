@@ -4,24 +4,72 @@
   --ESBlack: #000000;
   --CCYellow:#c9b350;
   --KeyboardShadow:#837432;
+  --KeyboardLetters:#000000;
   --TextFont: "Koulen", sans-serif;
+}
+
+.Pages-Container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 475px) {
+  .Pages-Container {
+    max-width: 475px;
+  }
+}
+@media (min-width: 640px) {
+  .Pages-Container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .Pages-Container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Pages-Container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .Pages-Container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .Pages-Container {
+    max-width: 1536px;
+  }
+}
+
+.centered-content{
+  text-align: center;
 }
 
 .LetterContainer{
   display: flex;
+  justify-content: center;
+  padding: 20px 0px;
 }
 
 .Letter{
-  border: 1px solid black;
-  height: 20px;
+  border: 5px solid black;
+  height: 50px;
   width: 50px;
   text-align: center;
 }
 
 .SelectedLetter{
-  border: 1px solid red;
+  border: 5px solid red;
   background-color: rgb(185, 187, 146);
-  height: 20px;
+  height: 50px;
   width: 50px;
   color: aliceblue;
   text-align: center;
@@ -31,47 +79,66 @@
   color: rgb(255, 13, 0);
 }
 
-.Keyboard{
-  text-align: center;
+.Keyboard {
+  display: flex;            /* make it a flex container */
+  flex-direction: column;
+  align-items: center;      /* center vertically */
   background-color: var(--CCYellow);
 }
 
 .KeyboardLetter{
-  width: 35px;
-  height: 35px;
+  font-family: var(--TextFont);
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-anchor: middle;
+  margin: 2px;
+  width: 2.2rem;
+  height: 2.2rem;
   box-shadow: 3px 3px 0px var(--KeyboardShadow);
   border-radius: 20%;
   border: none;
 }
 .KeyboardLetter:hover, .KeyboardLetterLong:hover{
   box-shadow: none;
+  background-color: aqua;
 }
 .KeyboardLetter:active, .hitkeyboardLetter{
-  width: 35px;
-  height: 35px;
+  font-family: var(--TextFont);
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-anchor: middle;
+  width: 2.2rem;
+  height: 2.2rem;
   border: none;
   background-color: rgb(4, 144, 30);
-  border-radius: 15px;
+  border-radius: 20%;
   box-shadow: none;
 }
 
 .KeyboardLetterLong{
-  width: 60px;
-  height: 35px;
+  margin: 2px;
+  width: 4.4rem;
+  height: 2.2rem;
+  box-shadow: 3px 3px 0px var(--KeyboardShadow);
+  border-radius: 10%;
   border: none;
-  border-radius: 15px;
+  font-family: var(--TextFont);
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-anchor: middle;
 }
 
 .KeyboardLetterLong:active, .hitkeyboardLetterLong{
-  width: 60px;
-  height: 35px;
+  width: 4.4rem;
+  height: 2.2rem;
   border: none;
   background-color: rgb(4, 144, 30);
-  border-radius: 15px;
+  border-radius: 10%;
+  border: none;
 }
 
 .KeyboardRow{
-display: flex;
+  width: max-content;
 }
 
 /* Revealed Definition CSS */
@@ -94,6 +161,37 @@ display: flex;
   padding: 2px;
   font-size: 12px; /* Adjust the font size as needed */
 }
+
+/* Base button shared by both */
+.buttonBase {
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 2px;
+  padding: 5px 20px;
+  height: 2.2rem;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  min-width: 125px; 
+  text-align: center;
+}
+
+/* Colour button specific styles */
+.colourButton {
+  background-color: var(--CCYellow);
+  color: azure;
+}
+
+.colourButton:hover {
+  color: var(--KeyboardLetters);
+}
+
+/* Black button specific styles */
+.blackButton {
+  background-color: black;
+  color: azure;
+}
+
 
 /* PopUp Window */
 .PopUpShade {

@@ -167,7 +167,7 @@ const CrownCryptic = () => {
 
 
   return (
-    <div>
+    <div className='centered-content'>
       {puzzleSolved && (
         <PuzzleSolvedPopUp
           ClueUsed={showDefinition}
@@ -177,9 +177,7 @@ const CrownCryptic = () => {
       )}
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
         <span>{questionPreDef}</span>
-        <span className={showDefinition ? "RevealedDefinition" : ""}>
-          {questionDef}
-        </span>
+        <span className={showDefinition ? "RevealedDefinition" : ""}>{questionDef}</span>
         <span>{questionPostDef}</span>
       </div>
       <b>Correct Answer:</b> {CorrectAnswer}
@@ -206,25 +204,23 @@ const CrownCryptic = () => {
             />
           </span>
         ))}
-        <button onClick={() => getDefinition()}>Clue</button>
         <button onClick={() => clearGuess()}>Clear</button>
       </div>
+
+  
+      <div className='buttonrow' style={{ background: 'blue' }}>
+            <button className='buttonBase colourButton' onClick={() => getDefinition()}>CLUE</button>
+            <button className='buttonBase colourButton' onClick={() => revealSelectedLetterAsHint()}>LETTER</button> 
+            <button className='buttonBase blackButton' onClick={() => checksGuessIsCorrect()}>SUBMIT</button>
+      </div>
+      
       <Keyboard
         setUserGuessArrayIndexToLetter={setUserGuessArrayIndexToLetter}
         moveCurrentSelectedSquareBy={moveCurrentSelectedSquareBy}
         checksGuessIsCorrect={checksGuessIsCorrect}
         puzzleSolved={puzzleSolved}
       />
-      <button onClick={() => revealSelectedLetterAsHint()}>
-        {" "}
-        Get Letter Hint
-      </button>{" "}
-      <br />
-      <button onClick={() => checksGuessIsCorrect()}>
-        {" "}
-        Check Answer is Correct
-      </button>
-      <br />
+  
     </div>
   );
 };
