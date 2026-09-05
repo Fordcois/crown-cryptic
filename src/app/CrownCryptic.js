@@ -7,14 +7,15 @@ import data from "@/resources/questionData.json";
 
 const CrownCryptic = () => {
 
-  const startDate = new Date(2025, 10, 10);
+  const startDate = new Date(2026, 8, 8);
   const todaysDate = new Date();
   const daysElapsed = Math.floor((todaysDate - startDate) / 86400000);
 
-  const dayPuzzleData = data[daysElapsed];
-  const question = dayPuzzleData.clue;
-  const definition = dayPuzzleData.definition;
-  const CorrectAnswer = dayPuzzleData.answer;
+  const puzzleIndex = ((daysElapsed % data.length) + data.length) % data.length;
+  const dayPuzzleData = data[puzzleIndex];
+  const question = dayPuzzleData?.clue || "";
+  const definition = dayPuzzleData?.definition || "";
+  const CorrectAnswer = dayPuzzleData?.answer || "";
 
   const answerLength = CorrectAnswer.split("").length;
 
