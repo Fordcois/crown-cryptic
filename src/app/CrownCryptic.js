@@ -176,20 +176,12 @@ const CrownCryptic = () => {
           emojiResults={emojiResults}
         />
       )}
-      <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+      <div className="clueText">
         <span>{questionPreDef}</span>
         <span className={showDefinition ? "RevealedDefinition" : ""}>{questionDef}</span>
         <span>{questionPostDef}</span>
       </div>
-      <b>Correct Answer:</b> {CorrectAnswer}
-      <br />
-      <b>Puzzle Solved:</b> {puzzleSolved.toString()}
-      <br />
-      <b>Current Selected Index:</b> {currentSelectedSquare}
-      <br />
-      <b>indexes Given As Hint:</b> {indexesGivenAsHint.toString()}
-      <br />
-      <div className="LetterContainer">
+      <div className="LetterContainer" style={{ "--answer-length": answerLength }}>
         {Array.from({ length: answerLength }).map((_, index) => (
           <span
             key={index}
@@ -205,13 +197,19 @@ const CrownCryptic = () => {
             />
           </span>
         ))}
-        <button onClick={() => clearGuess()}>Clear</button>
       </div>
+      <button className="clearButton" onClick={() => clearGuess()}>CLEAR</button>
 
   
-      <div className='buttonrow' style={{ background: 'blue' }}>
-            <button className='buttonBase colourButton' onClick={() => getDefinition()}>CLUE</button>
-            <button className='buttonBase colourButton' onClick={() => revealSelectedLetterAsHint()}>LETTER</button> 
+      <div className='buttonrow'>
+            <div className='hintButtons'>
+              <button
+                className={showDefinition ? 'buttonBase usedButton' : 'buttonBase colourButton'}
+                disabled={showDefinition}
+                onClick={() => getDefinition()}
+              >CLUE</button>
+              <button className='buttonBase colourButton' onClick={() => revealSelectedLetterAsHint()}>LETTER</button>
+            </div>
             <button className='buttonBase blackButton' onClick={() => checksGuessIsCorrect()}>SUBMIT</button>
       </div>
       

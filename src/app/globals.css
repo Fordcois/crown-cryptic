@@ -1,199 +1,336 @@
 @import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
 :root {
   /* Colours As Variables */
   --ESBlack: #000000;
-  --CCYellow:#c9b350;
-  --KeyboardShadow:#837432;
-  --KeyboardLetters:#000000;
+  --White: #ffffff;
+  --CCYellow: #c9b350;
+  --KeyboardShadow: #837432;
+  --KeyboardLetters: #000000;
   --TextFont: "Koulen", sans-serif;
+
+  /* Design tokens */
+  --SquareBorder: 4px;
+  --KeyGap: clamp(2px, 0.9vw, 4px);
+}
+
+/* ---------- Page shell ---------- */
+/* body is a flex column so the yellow keyboard band can be pushed to the
+   bottom of the viewport and fill everything below the buttons. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--White);
+  color: var(--ESBlack);
+  font-family: var(--TextFont);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* Clips the 100vw keyboard's overhang without the side effect `hidden` has:
+   a non-visible value on one axis forces the other axis to compute to `auto`,
+   which turned <body> into a second, needless scroll container. `clip` is
+   allowed to sit alongside `visible`, so the y axis stays untouched. */
+html {
+  overflow-x: clip;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* dvh tracks the actually-visible area; mobile 100vh includes the retracted
+     URL bar and so overflows by its height. vh first as the fallback. */
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .Pages-Container {
   display: flex;
+  flex: 1;
   width: 100%;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
 }
 @media (min-width: 475px) {
-  .Pages-Container {
-    max-width: 475px;
-  }
+  .Pages-Container { max-width: 475px; }
 }
 @media (min-width: 640px) {
-  .Pages-Container {
-    max-width: 640px;
-  }
+  .Pages-Container { max-width: 640px; }
 }
 @media (min-width: 768px) {
-  .Pages-Container {
-    max-width: 768px;
-  }
+  .Pages-Container { max-width: 768px; }
 }
-
 @media (min-width: 1024px) {
-  .Pages-Container {
-    max-width: 1024px;
-  }
+  .Pages-Container { max-width: 1024px; }
 }
-
 @media (min-width: 1280px) {
-  .Pages-Container {
-    max-width: 1280px;
-  }
+  .Pages-Container { max-width: 1280px; }
 }
-
 @media (min-width: 1536px) {
-  .Pages-Container {
-    max-width: 1536px;
-  }
+  .Pages-Container { max-width: 1536px; }
 }
 
-.centered-content{
+.centered-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
   text-align: center;
 }
 
-.LetterContainer{
+.container {
+  background-color: var(--CCYellow);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+  background-color: var(--White);
+}
+
+.titleText {
+  color: var(--CCYellow);
+  font-family: var(--TextFont);
+  font-weight: 400;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
+}
+
+.dateText {
+  color: var(--ESBlack);
+  font-size: clamp(0.95rem, 3.2vw, 1.25rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Clue ---------- */
+.clueText {
+  margin: clamp(1.5rem, 6vh, 3.5rem) auto clamp(1.25rem, 4vh, 2.5rem);
+  padding: 0 1rem;
+  max-width: 34rem;
+  font-size: clamp(1rem, 3.4vw, 1.35rem);
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* ---------- Letter squares ---------- */
+.LetterContainer {
   display: flex;
   justify-content: center;
-  padding: 20px 0px;
+  padding: 0 1rem;
 }
 
-.Letter{
-  border: 5px solid black;
-  height: 50px;
-  width: 50px;
-  text-align: center;
+/* Adjacent squares share a single border rather than doubling up. */
+.LetterContainer > span + span {
+  margin-left: calc(var(--SquareBorder) * -1);
 }
 
-.SelectedLetter{
-  border: 5px solid red;
-  background-color: rgb(242, 255, 3);
-  height: 50px;
-  width: 50px;
-  color: aliceblue;
-  text-align: center;
+.Letter,
+.SelectedLetter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: min(3.25rem, calc((100vw - 2.5rem) / var(--answer-length, 8)));
+  aspect-ratio: 1;
+  border: var(--SquareBorder) solid var(--ESBlack);
+  background-color: var(--White);
+  color: var(--ESBlack);
+  font-size: clamp(1rem, 5vw, 2rem);
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
 }
 
-.RevealedLetter{
-  color: rgb(255, 13, 0);
-}
-
-.Keyboard {
-  display: flex;            /* make it a flex container */
-  flex-direction: column;
-  align-items: center;      /* center vertically */
+.SelectedLetter {
   background-color: var(--CCYellow);
+  position: relative;
+  z-index: 1; /* keeps its full border above the shared edges */
 }
 
-.KeyboardLetter{
+.RevealedLetter {
+  color: var(--KeyboardShadow);
+}
+
+/* ---------- Button row ---------- */
+/* Grid so CLUE/LETTER sit hard left while SUBMIT stays centred on the page. */
+.buttonrow {
+  display: grid;
+  /* minmax(0,...) rather than 1fr: an fr track floors at min-content, which
+     let the CLUE/LETTER pair stretch the document past the viewport. */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  padding: clamp(1.5rem, 5vh, 2.75rem) 1rem clamp(1rem, 3vh, 2rem);
+}
+
+.hintButtons {
+  grid-column: 1;
+  display: flex;
+  gap: 0.5rem;
+  justify-self: start;
+}
+
+.buttonBase {
   font-family: var(--TextFont);
-  font-weight: 600;
-  font-size: 1.25rem;
-  text-anchor: middle;
-  margin: 2px;
-  width: 2.2rem;
-  height: 2.2rem;
-  box-shadow: 3px 3px 0px var(--KeyboardShadow);
-  border-radius: 20%;
+  font-weight: 400;
+  font-size: clamp(1rem, 3.4vw, 1.4rem);
+  letter-spacing: 0.05em;
+  padding: 0.35rem 1.25rem;
+  border-radius: 12px;
   border: none;
-}
-.KeyboardLetter:hover, .KeyboardLetterLong:hover{
-  box-shadow: none;
-  background-color: aqua;
-}
-.KeyboardLetter:active, .hitkeyboardLetter{
-  font-family: var(--TextFont);
-  font-weight: 600;
-  font-size: 1.25rem;
-  text-anchor: middle;
-  width: 2.2rem;
-  height: 2.2rem;
-  border: none;
-  background-color: rgb(4, 144, 30);
-  border-radius: 20%;
-  box-shadow: none;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.3;
 }
 
-.KeyboardLetterLong{
-  margin: 2px;
-  width: 4.4rem;
-  height: 2.2rem;
-  box-shadow: 3px 3px 0px var(--KeyboardShadow);
-  border-radius: 10%;
-  border: none;
-  font-family: var(--TextFont);
-  font-weight: 600;
-  font-size: 1.25rem;
-  text-anchor: middle;
+.colourButton {
+  background-color: var(--CCYellow);
+  color: var(--White);
 }
 
-.KeyboardLetterLong:active, .hitkeyboardLetterLong{
-  width: 4.4rem;
-  height: 2.2rem;
-  border: none;
-  background-color: rgb(4, 144, 30);
-  border-radius: 10%;
-  border: none;
+.colourButton:hover {
+  background-color: var(--KeyboardShadow);
 }
 
-.KeyboardRow{
-  width: max-content;
+/* Spent hint: reads as done rather than available, and can't be re-fired. */
+.usedButton {
+  background-color: var(--ESBlack);
+  color: var(--White);
 }
 
-/* Revealed Definition CSS */
+.buttonBase:disabled {
+  cursor: default;
+}
+
+.blackButton {
+  grid-column: 2;
+  justify-self: center;
+  background-color: var(--ESBlack);
+  color: var(--White);
+  font-size: clamp(1.25rem, 4.5vw, 2rem);
+  padding: 0.4rem 2.25rem;
+  border-radius: 14px;
+}
+
+.blackButton:hover {
+  background-color: var(--KeyboardShadow);
+}
+
+/* Too narrow to keep SUBMIT centred beside the hint buttons — stack instead.
+   The mock is desktop-only, so this is an assumption. */
+@media (max-width: 620px) {
+  .buttonrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hintButtons {
+    justify-self: auto;
+  }
+}
+
+/* ---------- Revealed definition ---------- */
 .RevealedDefinition {
   position: relative;
   display: inline-block;
-  background-color: var(--CCYellow); 
-  padding: 0 2px;
-  border-radius: 3px;
-  transition: all 0.5s ease-out; /* Smooth transition for the reveal */
+  background-color: var(--CCYellow);
+  padding: 0 5px;
+  border-radius: 6px;
+  transition: all 0.5s ease-out;
 }
 
 .RevealedDefinition::before {
   content: "DEFINITION";
   position: absolute;
-  top: -15px; /* Adjust this value based on your needs */
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--CCYellow); /* Text color */
+  color: var(--CCYellow);
   padding: 2px;
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 12px;
 }
 
-/* Base button shared by both */
-.buttonBase {
-  font-weight: 600;
-  font-size: 1.25rem;
-  margin: 2px;
-  padding: 5px 20px;
-  height: 2.2rem;
-  border-radius: 10px;
-  border: none;
-  position: relative;
-  min-width: 125px; 
-  text-align: center;
-}
-
-/* Colour button specific styles */
-.colourButton {
+/* ---------- Keyboard ---------- */
+/* margin-top:auto drops the band to the bottom; the negative inline margins
+   break it out of .Pages-Container's max-width so it spans the viewport. */
+.Keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--KeyGap);
+  margin-top: auto;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: clamp(1rem, 3vh, 2rem) 0.25rem clamp(1.25rem, 4vh, 2.5rem);
   background-color: var(--CCYellow);
-  color: azure;
 }
 
-.colourButton:hover {
+.KeyboardRow {
+  display: flex;
+  justify-content: center;
+  gap: var(--KeyGap);
+  max-width: 100%;
+}
+
+.KeyboardLetter,
+.hitkeyboardLetter,
+.KeyboardLetterLong,
+.hitkeyboardLetterLong {
+  font-family: var(--TextFont);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 4.5vw, 1.75rem);
+  line-height: 1;
+  height: min(2.9rem, 8.8vw);
+  width: min(2.6rem, 7.3vw);
+  background-color: var(--White);
   color: var(--KeyboardLetters);
+  border: none;
+  border-radius: 22%;
+  box-shadow: 3px 3px 0px var(--KeyboardShadow);
+  cursor: pointer;
+  padding: 0;
 }
 
-/* Black button specific styles */
-.blackButton {
-  background-color: black;
-  color: azure;
+.KeyboardLetterLong,
+.hitkeyboardLetterLong {
+  width: min(5.4rem, 13vw);
+  font-size: min(1rem, 2.6vw);
+  border-radius: 10%;
 }
 
+.KeyboardLetter:hover,
+.KeyboardLetterLong:hover {
+  background-color: #f2ead1;
+}
 
-/* PopUp Window */
+/* Pressed state: key sinks onto its own shadow. */
+.KeyboardLetter:active,
+.hitkeyboardLetter,
+.KeyboardLetterLong:active,
+.hitkeyboardLetterLong {
+  background-color: #f2ead1;
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+/* ---------- PopUp Window ---------- */
 .PopUpShade {
   display: block;
   justify-content: center;
@@ -204,51 +341,39 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
+
 .PopUpWindow {
   background-color: #fefefe;
   margin: 10% auto;
   width: 80%;
+  max-width: 30rem;
   text-align: center;
   border-radius: 15px;
 }
 
-/* Styled Elements */
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--White);
-  font-family: var(--TextFont);
-  font-size: 1.25rem;
-}
-
-.container{
-  background-color: #c9b350;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-}
-
-/* Header */
-.headerContainer{
-
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 1%;
-}
-.titleText{
-  color: var(--CCYellow);
-  font-family: "Koulen", sans-serif;
-  font-weight: 400;
-  font-size: 2.5rem;
-}
-
-/* DIVS For displaying Content */
-.center{
+/* ---------- DIVS For displaying Content ---------- */
+.center {
   margin: auto;
   width: 100%;
   text-align: center;
+}
+
+/* Not in the design — kept as an understated control under the grid. */
+.clearButton {
+  align-self: center;
+  margin-top: 0.75rem;
+  padding: 0.15rem 0.75rem;
+  font-family: var(--TextFont);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--KeyboardShadow);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  color: var(--ESBlack);
 }

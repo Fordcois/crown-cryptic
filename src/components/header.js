@@ -4,8 +4,7 @@ const Header=()=>{
 return (
     <div className="headerContainer">
         <span className="titleText">CROWN CRYPTIC</span>
-        <br/>
-        {formatDate(today)}
+        <span className="dateText">{formatDate(today)}</span>
     </div>
 )};
 

@@ -9,7 +9,6 @@ const ShareButton = ({emojiResults, cluesUsed, clueSgOrPl, letterHintsGiven, let
     const [isClickable, setIsClickable] = useState(true);
 
     const urlToShare = 'http://localhost:3000/'
-    // const UrlTitleToShare = 'Samuel Ford - Full Stack Developer'
     const messageToShareClipboard = "I Solved Crown Cryptic!" + "\n" + emojiResults + "\n🅰️ " + letterHintsGiven + " " + letterSgOrPl + " Given\n 🔍 " + cluesUsed + " " + clueSgOrPl + " Used\n"; 
     const messageToShareSocials = "I Solved Crown Cryptic!" + "%0a" + emojiResults + "%0a🅰️ " + letterHintsGiven + " " + letterSgOrPl + " Given%0a🔍 " + cluesUsed + " " + clueSgOrPl + " Used%0a";
 
